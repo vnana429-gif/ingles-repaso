@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso Completo de Inglés - Parcial V4</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --border: #e2e8f0;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: #64748b;
+            margin-top: 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .tab-button {
+            padding: 10px 14px;
+            border: none;
+            background: #e2e8f0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            background-color: #cbd5e1;
+            color: var(--primary-dark);
+        }
+
+        .tab-button.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        .rule-card {
+            background: #fff;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .reading-box {
+            background-color: #f1f5f9;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.7;
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #1e293b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eff6ff;
+            color: var(--primary-dark);
+        }
+
+        .quiz-item {
+            background-color: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+            font-size: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 110px;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 450px;
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            margin-top: 10px;
+            padding: 9px 18px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-next {
+            background-color: #10b981;
+            margin-left: 8px;
+        }
+
+        .btn-next:hover {
+            background-color: #059669;
+        }
+
+        .options-btn {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .opt-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--primary);
+            background-color: #fff;
+            color: var(--primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover {
+            background-color: #eff6ff;
+        }
+
+        .feedback {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .step-card {
+            display: none;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        .step-tracker {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Guía Interactiva de Inglés - Parcial V4</h1>
+        <p class="subtitle">Validación Flexible de Respuestas y Corrección de Formato</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'reading_page')">📖 1. Reading: Nachito's Holiday</button>
+        <button class="tab-button" onclick="openTab(event, 'step_gramatica')">✏️ 2. Pasado Simple (10 Preguntas)</button>
+        <button class="tab-button" onclick="openTab(event, 'step_cuantificadores')">🥛 3. Cuantificadores (11 Preguntas)</button>
+        <button class="tab-button" onclick="openTab(event, 'teoria_cuant')">📚 4. Teoría: Cuantificadores</button>
+        <button class="tab-button" onclick="openTab(event, 'teoria_pasado')">🗓️ 5. Teoría: Was/Were & Fechas</button>
+        <button class="tab-button" onclick="openTab(event, 'teoria_clase6')">🏖️ 6. Teoría: Clase 6 (DID / Because / So)</button>
+        <button class="tab-button" onclick="openTab(event, 'simulador')">📝 7. Simulador Examen (14 Preguntas)</button>
+    </div>
+
+    <!-- PÁGINA 1: READING -->
+    <div id="reading_page" class="tab-content active">
+        <h2>Reading: My Summer Days at Costanera de Quilmes</h2>
+        <div class="reading-box">
+            "Last month, I went on holiday to Costanera de Quilmes with my family. The weather was very hot, so we spent a lot of time near the beach. I drank a little cold mate and ate a few hamburgers with my brothers. I didn't swim in the river, but I played football with some local friends. In the evening, we bought some ice cream because it was very warm. There weren't many people on weekdays, so it was quiet. On my last day, I saw a beautiful sunset near the river. I loved my holiday!"
+        </div>
+
+        <h3>1. Descripción del Texto en Tercera Persona (Pasalo a 3.ª persona)</h3>
+        <p style="color:#64748b; font-size:14px;">El texto está contado por <b>Nachito</b> en primera persona (<i>I</i>). Describí en unos 5 renglones lo que él hizo usando la 3.ª persona (<i>He / Nachito went..., He drank...</i>):</p>
+        
+        <div class="quiz-item">
+            <textarea id="summary-input" placeholder="Escribí tu descripción en 3ª persona..."></textarea>
+            <br>
+            <button class="btn-submit" onclick="checkSummary()">Validar Descripción</button>
+            <div id="summary-fb" class="feedback"></div>
+        </div>
+
+        <h3>2. Preguntas de Comprensión</h3>
+        <p style="color:#64748b; font-size:14px;">Respondé en inglés sobre Nachito:</p>
+
+        <div class="quiz-item">
+            <div class="quiz-question">1. Where did Nachito go on his last holiday?[cite: 8]</div>
+            <input type="text" id="rq-1" placeholder="Escribí tu respuesta...">
+            <br><button class="btn-submit" onclick="checkReadingQ(1)">Comprobar</button>
+            <div id="rfb-1" class="feedback"></div>
+        </div>
+
+        <div class="quiz-item">
+            <div class="quiz-question">2. What did he drink and eat at the beach?[cite: 8]</div>
+            <input type="text" id="rq-2" placeholder="Escribí tu respuesta...">
+            <br><button class="btn-submit" onclick="checkReadingQ(2)">Comprobar</button>
+            <div id="rfb-2" class="feedback"></div>
+        </div>
+
+        <div class="quiz-item">
+            <div class="quiz-question">3. Did he swim in the river?</div>
+            <input type="text" id="rq-3" placeholder="Escribí tu respuesta...">
+            <br><button class="btn-submit" onclick="checkReadingQ(3)">Comprobar</button>
+            <div id="rfb-3" class="feedback"></div>
+        </div>
+
+        <div class="quiz-item">
+            <div class="quiz-question">4. Why did they buy ice cream in the evening?[cite: 8]</div>
+            <input type="text" id="rq-4" placeholder="Escribí tu respuesta...">
+            <br><button class="btn-submit" onclick="checkReadingQ(4)">Comprobar</button>
+            <div id="rfb-4" class="feedback"></div>
+        </div>
+
+        <div class="quiz-item">
+            <div class="quiz-question">5. What did he see on his last day?[cite: 8]</div>
+            <input type="text" id="rq-5" placeholder="Escribí tu respuesta...">
+            <br><button class="btn-submit" onclick="checkReadingQ(5)">Comprobar</button>
+            <div id="rfb-5" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: PASO A PASO GRAMÁTICA -->
+    <div id="step_gramatica" class="tab-content">
+        <h2>Actividad Interactiva: Pasado Simple (10 Preguntas)</h2>
+        <p style="color:#64748b; font-size:13px;">Podés ingresar solo la palabra del espacio (ej: <code>didn't swim</code>) o la oración completa. ¡El sistema aceptará ambas!</p>
+
+        <!-- Q1 -->
+        <div id="gstep-1" class="quiz-item step-card active">
+            <div class="step-tracker">Pregunta 1 de 10</div>
+            <div class="quiz-question">1. Yesterday, Sarah __________ (buy) a new pair of shoes.</div>
+            <input type="text" id="gq-1" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(1, ['bought'], 'Buy es un verbo irregular; su pasado simple es bought.')">Comprobar</button>
+            <button id="gnext-1" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(1)">Siguiente →</button>
+            <div id="gfb-1" class="feedback"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div id="gstep-2" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 2 de 10</div>
+            <div class="quiz-question">2. We __________ (not go) to the cinema last weekend.</div>
+            <input type="text" id="gq-2" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(2, ['didn\'t go', 'didnt go', 'did not go'], 'Se usa didn\'t (o didnt) + verbo en infinitivo (go).')">Comprobar</button>
+            <button id="gnext-2" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(2)">Siguiente →</button>
+            <div id="gfb-2" class="feedback"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div id="gstep-3" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 3 de 10</div>
+            <div class="quiz-question">3. They __________ (play) football in Quilmes for two hours.[cite: 8]</div>
+            <input type="text" id="gq-3" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(3, ['played'], 'Play es un verbo regular, por lo que suma -ed (played).')">Comprobar</button>
+            <button id="gnext-3" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(3)">Siguiente →</button>
+            <div id="gfb-3" class="feedback"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div id="gstep-4" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 4 de 10</div>
+            <div class="quiz-question">4. Where __________ you __________ (go) on your last holiday?[cite: 8]</div>
+            <input type="text" id="gq-4" placeholder="Escribí las dos palabras...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(4, ['did go'], 'En preguntas usamos el auxiliar DID y el verbo en infinitivo GO[cite: 8].')">Comprobar</button>
+            <button id="gnext-4" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(4)">Siguiente →</button>
+            <div id="gfb-4" class="feedback"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div id="gstep-5" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 5 de 10</div>
+            <div class="quiz-question">5. She __________ (see) a beautiful sunset yesterday.[cite: 8]</div>
+            <input type="text" id="gq-5" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(5, ['saw'], 'See es un verbo irregular; su pasado simple es saw[cite: 8].')">Comprobar</button>
+            <button id="gnext-5" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(5)">Siguiente →</button>
+            <div id="gfb-5" class="feedback"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div id="gstep-6" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 6 de 10</div>
+            <div class="quiz-question">6. What __________ you __________ (eat) for lunch yesterday?</div>
+            <input type="text" id="gq-6" placeholder="Escribí las dos palabras...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(6, ['did eat'], 'En preguntas del pasado va DID + sujeto + verbo en infinitivo (EAT).')">Comprobar</button>
+            <button id="gnext-6" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(6)">Siguiente →</button>
+            <div id="gfb-6" class="feedback"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div id="gstep-7" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 7 de 10</div>
+            <div class="quiz-question">7. Nachito __________ (not swim) in the river.</div>
+            <input type="text" id="gq-7" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(7, ['didn\'t swim', 'didnt swim', 'did not swim'], 'Negativo: didn\'t + infinitivo (swim).')">Comprobar</button>
+            <button id="gnext-7" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(7)">Siguiente →</button>
+            <div id="gfb-7" class="feedback"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div id="gstep-8" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 8 de 10</div>
+            <div class="quiz-question">8. They __________ (drink) cold mate on the beach.[cite: 8]</div>
+            <input type="text" id="gq-8" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(8, ['drank'], 'El pasado simple del verbo irregular drink es drank.')">Comprobar</button>
+            <button id="gnext-8" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(8)">Siguiente →</button>
+            <div id="gfb-8" class="feedback"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div id="gstep-9" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 9 de 10</div>
+            <div class="quiz-question">9. My parents __________ (be) very happy with the trip.[cite: 7]</div>
+            <input type="text" id="gq-9" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(9, ['were'], 'My parents equivale a They, por lo que el pasado del verbo To Be es were[cite: 7].')">Comprobar</button>
+            <button id="gnext-9" class="btn-submit btn-next" style="display:none;" onclick="nextGrammarStep(9)">Siguiente →</button>
+            <div id="gfb-9" class="feedback"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div id="gstep-10" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 10 de 10</div>
+            <div class="quiz-question">10. I __________ (write) an email to my teacher yesterday.</div>
+            <input type="text" id="gq-10" placeholder="Escribí tu respuesta...">
+            <br>
+            <button class="btn-submit" onclick="checkStepGrammar(10, ['wrote'], 'El pasado simple del verbo irregular write es wrote.')">Comprobar</button>
+            <div id="gfb-10" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: PASO A PASO CUANTIFICADORES -->
+    <div id="step_cuantificadores" class="tab-content">
+        <h2>Actividad Interactiva: Incontables y Cuantificadores (11 Preguntas)</h2>
+        <p style="color:#64748b; font-size:13px;">Prestá atención si la frase requiere el artículo <b>a</b> (ej: <i>a little / a few</i>) o si debe ir a secas (ej: <i>little / few</i>)[cite: 12].</p>
+
+        <!-- C1 -->
+        <div id="cstep-1" class="quiz-item step-card active">
+            <div class="step-tracker">Pregunta 1 de 11</div>
+            <div class="quiz-question">1. How __________ water do you drink every day?</div>
+            <input type="text" id="cq-1" placeholder="Escribí much o many...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(1, ['much'], 'Water es un sustantivo incontable, requiere much.')">Comprobar</button>
+            <button id="cnext-1" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(1)">Siguiente →</button>
+            <div id="cfb-1" class="feedback"></div>
+        </div>
+
+        <!-- C2 -->
+        <div id="cstep-2" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 2 de 11</div>
+            <div class="quiz-question">2. There is only __________ sugar left in the kitchen.</div>
+            <input type="text" id="cq-2" placeholder="Escribí a little o a few...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(2, ['a little'], 'Sugar es incontable, requiere a little.')">Comprobar</button>
+            <button id="cnext-2" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(2)">Siguiente →</button>
+            <div id="cfb-2" class="feedback"></div>
+        </div>
+
+        <!-- C3 -->
+        <div id="cstep-3" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 3 de 11</div>
+            <div class="quiz-question">3. How __________ apples did you buy at the market?</div>
+            <input type="text" id="cq-3" placeholder="Escribí much o many...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(3, ['many'], 'Apples es contable en plural, requiere many.')">Comprobar</button>
+            <button id="cnext-3" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(3)">Siguiente →</button>
+            <div id="cfb-3" class="feedback"></div>
+        </div>
+
+        <!-- C4 -->
+        <div id="cstep-4" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 4 de 11</div>
+            <div class="quiz-question">4. Nachito has __________ friends in Quilmes, so he is happy.</div>
+            <input type="text" id="cq-4" placeholder="Escribí a few o a little...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(4, ['a few'], 'Friends es contable en plural, requiere a few.')">Comprobar</button>
+            <button id="cnext-4" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(4)">Siguiente →</button>
+            <div id="cfb-4" class="feedback"></div>
+        </div>
+
+        <!-- C5 -->
+        <div id="cstep-5" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 5 de 11</div>
+            <div class="quiz-question">5. We don't have __________ money to buy a new car.</div>
+            <input type="text" id="cq-5" placeholder="Escribí much o many...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(5, ['much'], 'Money es incontable, requiere much.')">Comprobar</button>
+            <button id="cnext-5" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(5)">Siguiente →</button>
+            <div id="cfb-5" class="feedback"></div>
+        </div>
+
+        <!-- C6 -->
+        <div id="cstep-6" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 6 de 11</div>
+            <div class="quiz-question">6. Would you like __________ coffee?</div>
+            <input type="text" id="cq-6" placeholder="Escribí some o any...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(6, ['some'], 'Es un ofrecimiento amable, por eso va some.')">Comprobar</button>
+            <button id="cnext-6" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(6)">Siguiente →</button>
+            <div id="cfb-6" class="feedback"></div>
+        </div>
+
+        <!-- C7 -->
+        <div id="cstep-7" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 7 de 11</div>
+            <div class="quiz-question">7. We have __________ time left before the test starts, almost nothing!</div>
+            <input type="text" id="cq-7" placeholder="Escribí little o few...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(7, ['little'], 'Time es incontable y expresa casi nada, requiere little.')">Comprobar</button>
+            <button id="cnext-7" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(7)">Siguiente →</button>
+            <div id="cfb-7" class="feedback"></div>
+        </div>
+
+        <!-- C8 -->
+        <div id="cstep-8" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 8 de 11</div>
+            <div class="quiz-question">8. There are __________ students in the yard because of the rain.</div>
+            <input type="text" id="cq-8" placeholder="Escribí few o little...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(8, ['few'], 'Students es contable plural y expresa casi ninguno, requiere few.')">Comprobar</button>
+            <button id="cnext-8" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(8)">Siguiente →</button>
+            <div id="cfb-8" class="feedback"></div>
+        </div>
+
+        <!-- C9 -->
+        <div id="cstep-9" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 9 de 11</div>
+            <div class="quiz-question">9. Is there __________ milk in the fridge?</div>
+            <input type="text" id="cq-9" placeholder="Escribí any o some...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(9, ['any'], 'En preguntas generales sobre existencia se utiliza any.')">Comprobar</button>
+            <button id="cnext-9" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(9)">Siguiente →</button>
+            <div id="cfb-9" class="feedback"></div>
+        </div>
+
+        <!-- C10 -->
+        <div id="cstep-10" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 10 de 11</div>
+            <div class="quiz-question">10. Nachito bought __________ ice cream for his brothers.</div>
+            <input type="text" id="cq-10" placeholder="Escribí some o any...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(10, ['some'], 'Oración afirmativa, requiere some.')">Comprobar</button>
+            <button id="cnext-10" class="btn-submit btn-next" style="display:none;" onclick="nextCuantStep(10)">Siguiente →</button>
+            <div id="cfb-10" class="feedback"></div>
+        </div>
+
+        <!-- C11 -->
+        <div id="cstep-11" class="quiz-item step-card">
+            <div class="step-tracker">Pregunta 11 de 11</div>
+            <div class="quiz-question">11. There wasn't __________ traffic on the avenue this morning.</div>
+            <input type="text" id="cq-11" placeholder="Escribí much o many...">
+            <br>
+            <button class="btn-submit" onclick="checkStepCuant(11, ['much'], 'Traffic es incontable, en oraciones negativas va much.')">Comprobar</button>
+            <div id="cfb-11" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4: TEORÍA CUANTIFICADORES -->
+    <div id="teoria_cuant" class="tab-content">
+        <h2>Teoría: Cuantificadores</h2>
+        <div class="rule-card">
+            <h3>A / An / Some / Any</h3>
+            <ul>
+                <li><b>A / An:</b> Contables en <b>singular</b> (<i>a banana, an apple</i>).</li>
+                <li><b>Some:</b> Oraciones <b>afirmativas (+)</b> y ofrecimientos/pedidos amables.</li>
+                <li><b>Any:</b> Oraciones <b>negativas (-)</b> y preguntas generales (?).</li>
+            </ul>
+        </div>
+        <div class="rule-card">
+            <h3>Little / A Little vs. Few / A Few[cite: 12]</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sustantivo</th>
+                        <th>Sentido Positivo ("Algo / Un poco")</th>
+                        <th>Sentido Negativo ("Casi nada / Escaso")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Incontables</b> (water, time, money)</td>
+                        <td><b>A little</b>[cite: 12]</td>
+                        <td><b>Little</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Contables Plural</b> (friends, apples)</td>
+                        <td><b>A few</b></td>
+                        <td><b>Few</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5: TEORÍA PASADO WAS / WERE -->
+    <div id="teoria_pasado" class="tab-content">
+        <h2>Teoría: Was / Were & Fechas[cite: 7]</h2>
+        <table>
+            <thead><tr><th>Sujeto</th><th>Afirmativo (+)</th><th>Negativo (-)</th></tr></thead>
+            <tbody>
+                <tr><td><b>I / He / She / It</b></td><td>was</td><td>wasn't / wasnt[cite: 9]</td></tr>
+                <tr><td><b>You / We / They</b></td><td>were</td><td>weren't / werent</td></tr>
+            </tbody>
+        </table>
+        <h2>Fechas (Dates)[cite: 7]</h2>
+        <p>Estructura: <code>The + [Día ordinal] + of + [Mes]</code>[cite: 7]</p>
+        <ul>
+            <li><b>24 de Marzo:</b> The twenty-fourth of March[cite: 7]</li>
+            <li><b>17 de Junio:</b> The seventeenth of June[cite: 7]</li>
+        </ul>
+    </div>
+
+    <!-- PÁGINA 6: TEORÍA CLASE 6 -->
+    <div id="teoria_clase6" class="tab-content">
+        <h2>Teoría: Clase 6 (DID / Because / So)[cite: 8]</h2>
+        <div class="rule-card">
+            <h3>Preguntas con DID[cite: 8]</h3>
+            <p><code>[Question Word] + DID + [Sujeto] + [Verbo en Infinitivo]...?</code></p>
+            <ul>
+                <li><b>Where did you go?</b>[cite: 8] → I <b>went</b> to Quilmes.</li>
+                <li><b>What did you see?</b>[cite: 8] → I <b>saw</b> the sunset.</li>
+            </ul>
+        </div>
+        <div class="rule-card">
+            <h3>Because vs. So[cite: 8]</h3>
+            <ul>
+                <li><b>Because (Porque):</b> Explica la causa o razón[cite: 8].</li>
+                <li><b>So (Así que / Por lo tanto):</b> Explica la consecuencia o resultado[cite: 8].</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PÁGINA 7: SIMULADOR TOTAL -->
+    <div id="simulador" class="tab-content">
+        <h2>Simulador Total de Examen (14 Preguntas)</h2>
+        <p>Elegí la alternativa correcta entre las 3 opciones disponibles:</p>
+        <div id="quiz-container"></div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        if (evt) evt.currentTarget.classList.add("active");
+    }
+
+    // NORMALIZA STRING (SACA PUNTOS, SIGNOS Y COMILLAS)
+    function normalizeStr(str) {
+        return str.toLowerCase().replace(/['’`.]/g, "").trim();
+    }
+
+    // VALIDACIÓN DE RESUMEN DEL READING
+    function checkSummary() {
+        const text = document.getElementById("summary-input").value.trim().toLowerCase();
+        const fb = document.getElementById("summary-fb");
+        fb.style.display = "block";
+
+        if (text.length < 35) {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ La descripción es demasiado corta. Escribí al menos 3 o 4 oraciones completas sobre Nachito en 3.ª persona.";
+            return;
+        }
+
+        if (text.includes("i went") || text.includes("my family") || text.includes("i drank") || text.includes("i didn't") || text.includes("i didnt")) {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Cuidado: Copiaste el texto en primera persona ('I / My'). Tenés que redactarlo en TERCERA PERSONA usando 'He / Nachito' (ej: 'Nachito went to Quilmes with his family...').";
+            return;
+        }
+
+        const keywords = ["nachito", "he", "his", "quilmes", "costanera", "beach", "holiday", "weather", "family"];
+        let count = 0;
+        keywords.forEach(kw => { if (text.includes(kw)) count++; });
+
+        if (count >= 2) {
+            fb.className = "feedback correct";
+            fb.innerText = "✓ ¡Excelente! Pasaste correctamente la información del texto a tercera persona (He / Nachito).";
+        } else {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Tu respuesta no menciona los datos clave del texto. Recordá incluir a Nachito, sus vacaciones en la Costanera de Quilmes y sus actividades.";
+        }
+    }
+
+    // VALIDACIÓN PREGUNTAS DEL READING
+    function checkReadingQ(qNum) {
+        const input = normalizeStr(document.getElementById("rq-" + qNum).value);
+        const fb = document.getElementById("rfb-" + qNum);
+        fb.style.display = "block";
+
+        if (input === "") {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Escribí una respuesta antes de comprobar.";
+            return;
+        }
+
+        if (input.includes("was drink") || input.includes("was ate") || input.includes("was go") || input.includes("was see")) {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Error Gramatical: No debés usar 'was' junto con otro verbo en presente o pasado (ej: NO se dice 'he was drink'). Se usa directamente el verbo en pasado: 'He drank...' o 'He ate...'.";
+            return;
+        }
+
+        if (qNum === 1) {
+            if (input.includes("quilmes") || input.includes("costanera")) {
+                fb.className = "feedback correct";
+                fb.innerText = "✓ ¡Correcto! Nachito fue a la Costanera de Quilmes (He went to Costanera de Quilmes).";
+            } else {
+                fb.className = "feedback incorrect";
+                fb.innerText = "✗ Incorrecto. La respuesta debe indicar que fue a la Costanera de Quilmes.";
+            }
+        } else if (qNum === 2) {
+            if ((input.includes("drank") || input.includes("had")) && (input.includes("mate") || input.includes("hamburgers"))) {
+                fb.className = "feedback correct";
+                fb.innerText = "✓ ¡Correcto! Tomó mate frío y comió hamburguesas (He drank cold mate and ate hamburgers).";
+            } else {
+                fb.className = "feedback incorrect";
+                fb.innerText = "✗ Incorrecto. Asegurate de usar los verbos en pasado 'drank' y 'ate'.";
+            }
+        } else if (qNum === 3) {
+            if (input.includes("no") || input.includes("didn") || input.includes("football") || input.includes("played")) {
+                fb.className = "feedback correct";
+                fb.innerText = "✓ ¡Correcto! No nadó en el río, sino que jugó al fútbol (No, he didn't swim in the river).";
+            } else {
+                fb.className = "feedback incorrect";
+                fb.innerText = "✗ Incorrecto. Debe responder 'No, he didn't swim in the river'.";
+            }
+        } else if (qNum === 4) {
+            if (input.includes("warm") || input.includes("hot") || input.includes("because")) {
+                fb.className = "feedback correct";
+                fb.innerText = "✓ ¡Correcto! Compraron helado porque hacía calor (Because it was very warm).";
+            } else {
+                fb.className = "feedback incorrect";
+                fb.innerText = "✗ Incorrecto. La razón es porque hacía calor (Because it was very warm).";
+            }
+        } else if (qNum === 5) {
+            if (input.includes("sunset") || input.includes("saw")) {
+                fb.className = "feedback correct";
+                fb.innerText = "✓ ¡Correcto! Vio el atardecer (He saw a sunset near the river).";
+            } else {
+                fb.className = "feedback incorrect";
+                fb.innerText = "✗ Incorrecto. Recuerda usar el pasado del verbo see: 'He saw a sunset'.";
+            }
+        }
+    }
+
+    // PASO A PASO GRAMÁTICA (ACEPTA ORACIÓN COMPLETA O SOLO LA PALABRA)
+    function checkStepGrammar(step, validArr, exp) {
+        const rawInput = document.getElementById("gq-" + step).value;
+        const input = normalizeStr(rawInput);
+        const fb = document.getElementById("gfb-" + step);
+        const nextBtn = document.getElementById("gnext-" + step);
+        fb.style.display = "block";
+
+        // Verifica si la entrada coincide con la palabra exacta O si la contiene dentro de la oración completa
+        let isValid = validArr.some(v => {
+            let normV = normalizeStr(v);
+            return input === normV || input.includes(normV);
+        });
+
+        if (isValid) {
+            fb.className = "feedback correct";
+            fb.innerText = "✓ ¡Correcto! " + exp;
+            if (nextBtn) nextBtn.style.display = "inline-block";
+        } else {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Respuesta incorrecta. La forma esperada es: '" + validArr[0] + "'. " + exp;
+        }
+    }
+
+    function nextGrammarStep(current) {
+        document.getElementById("gstep-" + current).classList.remove("active");
+        document.getElementById("gstep-" + (current + 1)).classList.add("active");
+    }
+
+    // PASO A PASO CUANTIFICADORES
+    function checkStepCuant(step, validArr, exp) {
+        const rawInput = document.getElementById("cq-" + step).value;
+        const input = normalizeStr(rawInput);
+        const fb = document.getElementById("cfb-" + step);
+        const nextBtn = document.getElementById("cnext-" + step);
+        fb.style.display = "block";
+
+        let isValid = validArr.some(v => {
+            let normV = normalizeStr(v);
+            return input === normV || input.includes(normV);
+        });
+
+        if (isValid) {
+            fb.className = "feedback correct";
+            fb.innerText = "✓ ¡Correcto! " + exp;
+            if (nextBtn) nextBtn.style.display = "inline-block";
+        } else {
+            fb.className = "feedback incorrect";
+            fb.innerText = "✗ Respuesta incorrecta. La forma esperada es: '" + validArr[0] + "'. " + exp;
+        }
+    }
+
+    function nextCuantStep(current) {
+        document.getElementById("cstep-" + current).classList.remove("active");
+        document.getElementById("cstep-" + (current + 1)).classList.add("active");
+    }
+
+    // SIMULADOR
+    const quizData = [
+        { q: "1. How _________ money do you have left?", opts: ["many", "much", "a few"], correct: 1, exp: "Money es incontable, requiere 'How much'." },
+        { q: "2. There are only _________ students in the classroom today.", opts: ["a little", "much", "a few"], correct: 2, exp: "Students es contable en plural, requiere 'a few'." },
+        { q: "3. Hurry up! We have _________ time left before the train leaves.", opts: ["little", "few", "a few"], correct: 0, exp: "Time es incontable y expresa casi nada de tiempo ('little')." },
+        { q: "4. Would you like _________ tea?", opts: ["any", "some", "many"], correct: 1, exp: "Es un ofrecimiento amable, por lo que se usa 'some'." },
+        { q: "5. She bought _________ apples at the supermarket.", opts: ["much", "a little", "a lot of"], correct: 2, exp: "'A lot of' se usa en oraciones afirmativas con sustantivos contables en plural." },
+        { q: "6. Peter and David _________ very sleepy last night.[cite: 7]", opts: ["were", "was", "is"], correct: 0, exp: "'Peter and David' es plural (They), requiere 'were'[cite: 7]." },
+        { q: "7. How do you write '24 de Marzo' in full?[cite: 7]", opts: ["The twenty-four of March", "The twenty-fourth of March", "Twenty-four March"], correct: 1, exp: "Se utiliza el número ordinal ('twenty-fourth')[cite: 7]." },
+        { q: "8. Where _________ you go on your last holiday?[cite: 8]", opts: ["were", "was", "did"], correct: 2, exp: "Para preguntas sobre acciones pasadas se usa el auxiliar 'DID'[cite: 8]." },
+        { q: "9. What did you _________ at the beach yesterday?[cite: 8]", opts: ["see", "saw", "seen"], correct: 0, exp: "Con el auxiliar 'DID', el verbo principal va en infinitivo ('see')[cite: 8]." },
+        { q: "10. Lidia loved basketball, _________ she went to the park every day to play.[cite: 8]", opts: ["because", "so", "but"], correct: 1, exp: "'SO' introduce la consecuencia o resultado[cite: 8]." },
+        { q: "11. She became a model _________ she was beautiful.[cite: 8]", opts: ["because", "so", "although"], correct: 0, exp: "'BECAUSE' introduce la causa o razón[cite: 8]." },
+        { q: "12. Last year, I _________ to Brazil for my holidays.", opts: ["go", "went", "gone"], correct: 1, exp: "El pasado simple afirmativo de 'go' es 'went'." },
+        { q: "13. They _________ football in the park yesterday afternoon.", opts: ["play", "played", "playing"], correct: 1, exp: "El verbo 'play' en pasado simple es 'played'." },
+        { q: "14. What did you do? - I _________ in the river.", opts: ["swam", "swim", "swimming"], correct: 0, exp: "El pasado afirmativo del verbo 'swim' es 'swam'." }
+    ];
+
+    function renderQuiz() {
+        const container = document.getElementById('quiz-container');
+        quizData.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'quiz-item';
+            
+            let buttonsHTML = '<div class="options-btn">';
+            item.opts.forEach((opt, optIdx) => {
+                buttonsHTML += `<button class="opt-btn" onclick="checkSimAnswer(${index}, ${optIdx}, ${optIdx === item.correct}, '${item.exp.replace(/'/g, "\\'")}')">${opt}</button>`;
+            });
+            buttonsHTML += '</div>';
+
+            div.innerHTML = `
+                <div class="quiz-question">${item.q}</div>
+                ${buttonsHTML}
+                <div id="sim-fb-${index}" class="feedback"></div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function checkSimAnswer(qIndex, btnNum, isCorrect, exp) {
+        const fb = document.getElementById('sim-fb-' + qIndex);
+        fb.style.display = 'block';
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            fb.innerText = '✓ ¡Correcto! ' + exp;
+        } else {
+            fb.className = 'feedback incorrect';
+            fb.innerText = '✗ Incorrecto. ' + exp;
+        }
+    }
+
+    renderQuiz();
+</script>
+
+</body>
+</html>
